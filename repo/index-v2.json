@@ -1,0 +1,72 @@
+{
+  "repo": {
+    "name": {
+      "en-US": "ReelsOff"
+    },
+    "description": {
+      "en-US": "Dépôt personnel de ReelsOff (coupe les Reels, Shorts et Spotlight)."
+    },
+    "icon": {
+      "en-US": {
+        "name": "/icon.png",
+        "sha256": "132bee635830c95c32be8b82cbe6d8c634af616470f4ec6611286bea7111ea1d",
+        "size": 730
+      }
+    },
+    "address": "https://neocpt.github.io/reelsoff-fdroid/repo",
+    "timestamp": 1794146564047,
+    "version": 22
+  },
+  "packages": {
+    "com.neo.reelsoff": {
+      "metadata": {
+        "added": 1794146564047,
+        "lastUpdated": 1794146564047,
+        "license": "MIT",
+        "categories": [
+          "System"
+        ],
+        "name": {
+          "en-US": "ReelsOff"
+        },
+        "summary": {
+          "en-US": "Coupe les Reels Instagram, les Shorts YouTube et le Spotlight Snapchat."
+        },
+        "description": {
+          "en-US": "Quitte l'onglet Reels d'Instagram, ferme le lecteur Shorts de YouTube et quitte le Spotlight de Snapchat. Aucune donnée n'est envoyée."
+        },
+        "icon": {
+          "en-US": {
+            "name": "/icon.png",
+            "sha256": "132bee635830c95c32be8b82cbe6d8c634af616470f4ec6611286bea7111ea1d",
+            "size": 730
+          }
+        },
+        "preferredSigner": "0aeec84b511468ae446417f6fae31279c2ccacaa762f34fb7e7cf4d520f988fe"
+      },
+      "versions": {
+        "3d84670853d54419af2c0977dce21730dfcabf3d8d0a71044d6e215ab4630610": {
+          "added": 1794146564047,
+          "file": {
+            "name": "/com.neo.reelsoff_1.apk",
+            "sha256": "3d84670853d54419af2c0977dce21730dfcabf3d8d0a71044d6e215ab4630610",
+            "size": 619053
+          },
+          "manifest": {
+            "versionName": "1.0",
+            "versionCode": 1,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 34
+            },
+            "signer": {
+              "sha256": [
+                "0aeec84b511468ae446417f6fae31279c2ccacaa762f34fb7e7cf4d520f988fe"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
