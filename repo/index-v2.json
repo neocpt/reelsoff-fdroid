@@ -8,20 +8,20 @@
     },
     "icon": {
       "en-US": {
-        "name": "/icon.png",
+        "name": "/icons/icon.png",
         "sha256": "132bee635830c95c32be8b82cbe6d8c634af616470f4ec6611286bea7111ea1d",
         "size": 730
       }
     },
     "address": "https://neocpt.github.io/reelsoff-fdroid/repo",
-    "timestamp": 1794146564047,
+    "timestamp": 1794146788851,
     "version": 22
   },
   "packages": {
     "com.neo.reelsoff": {
       "metadata": {
-        "added": 1794146564047,
-        "lastUpdated": 1794146564047,
+        "added": 1794146788851,
+        "lastUpdated": 1794146788851,
         "license": "MIT",
         "categories": [
           "System"
@@ -37,7 +37,7 @@
         },
         "icon": {
           "en-US": {
-            "name": "/icon.png",
+            "name": "/icons/icon.png",
             "sha256": "132bee635830c95c32be8b82cbe6d8c634af616470f4ec6611286bea7111ea1d",
             "size": 730
           }
@@ -46,7 +46,7 @@
       },
       "versions": {
         "3d84670853d54419af2c0977dce21730dfcabf3d8d0a71044d6e215ab4630610": {
-          "added": 1794146564047,
+          "added": 1794146788851,
           "file": {
             "name": "/com.neo.reelsoff_1.apk",
             "sha256": "3d84670853d54419af2c0977dce21730dfcabf3d8d0a71044d6e215ab4630610",

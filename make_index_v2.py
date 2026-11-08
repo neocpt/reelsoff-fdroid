@@ -16,6 +16,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE / "repo"
 APK = REPO / "com.neo.reelsoff_1.apk"
 ICON = REPO / "icon.png"
+ICON_V2 = REPO / "icons" / "icon.png"  # F-Droid v2 cherche l'icône dans icons/
 KEYSTORE = Path(r"C:\Users\coupa\.reelsoff\reelsoff-release.jks")
 KEYALIAS = "reelsoff"
 PROPS = Path(r"C:\Users\coupa\OneDrive\Desktop\claude\ReelsOff\keystore.properties")
@@ -53,6 +54,11 @@ def cert_der(password: str) -> bytes:
     return base64.b64decode(body)
 
 
+def write_json(path: Path, obj: dict) -> None:
+    # Fins de ligne LF explicites : le hash et la taille de entry.json doivent correspondre au fichier servi.
+    path.write_bytes((json.dumps(obj, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
+
+
 def file_entry(path: Path, name: str) -> dict:
     data = path.read_bytes()
     return {"name": name, "sha256": hashlib.sha256(data).hexdigest(), "size": len(data)}
@@ -80,7 +86,7 @@ def main() -> None:
     signer = hashlib.sha256(der).hexdigest()
 
     apk_entry = file_entry(APK, f"/{APK.name}")
-    icon_entry = file_entry(ICON, "/icon.png")
+    icon_entry = file_entry(ICON_V2, "/icons/icon.png")
 
     repo = {
         "name": {LOCALE: "ReelsOff"},
@@ -100,7 +106,7 @@ def main() -> None:
         "summary": {LOCALE: "Coupe les Reels Instagram, les Shorts YouTube et le Spotlight Snapchat."},
         "description": {LOCALE: "Quitte l'onglet Reels d'Instagram, ferme le lecteur Shorts de YouTube "
                                 "et quitte le Spotlight de Snapchat. Aucune donnée n'est envoyée."},
-        "icon": {LOCALE: file_entry(ICON, "/icon.png")},
+        "icon": {LOCALE: file_entry(ICON_V2, "/icons/icon.png")},
         "preferredSigner": signer,
     }
 
@@ -120,7 +126,7 @@ def main() -> None:
         "packages": {PKG: {"metadata": metadata, "versions": {apk_entry["sha256"]: version}}},
     }
     index_v2_path = REPO / "index-v2.json"
-    index_v2_path.write_text(json.dumps(index_v2, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_json(index_v2_path, index_v2)
 
     # entry.json : décrit l'index v2 (taille et hash), puis entry.jar signé
     entry = {
@@ -135,7 +141,7 @@ def main() -> None:
         "diffs": {},
     }
     entry_json = REPO / "entry.json"
-    entry_json.write_text(json.dumps(entry, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_json(entry_json, entry)
     entry_jar = REPO / "entry.jar"
     entry_jar.unlink(missing_ok=True)
     with zipfile.ZipFile(entry_jar, "w", zipfile.ZIP_DEFLATED) as jar:
@@ -183,7 +189,7 @@ def main() -> None:
     }
     index_v1_json = SCRATCH / "index-v1.json"
     SCRATCH.mkdir(exist_ok=True)
-    index_v1_json.write_text(json.dumps(index_v1, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_json(index_v1_json, index_v1)
     index_v1_jar = REPO / "index-v1.jar"
     index_v1_jar.unlink(missing_ok=True)
     with zipfile.ZipFile(index_v1_jar, "w", zipfile.ZIP_DEFLATED) as jar:
