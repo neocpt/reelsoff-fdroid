@@ -64,6 +64,7 @@ def main() -> None:
         "name": "ReelsOff",
         "description": "Dépôt personnel de ReelsOff (coupe les Reels, Shorts et Spotlight).",
         "address": REPO_ADDRESS,
+        "icon": "icon.png",
         "version": 21,
         "timestamp": now_ms,
     }
